@@ -1,0 +1,246 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Test Dapp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <main class="container-fluid">
+      <header>
+        <div id="logo-container">
+          <h1 id="logo-text" class="text-center">
+            Test Dapp
+          </h1>
+          <br/>
+          <ul class="nav nav-pills mb-3 shadow-sm" id="pills-tab" role="tablist">
+            <li class="nav-item"><a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-explore" role="tab" aria-controls="pills-explore" aria-selected="true">Explore</a></li>
+            <li class="nav-item"> <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a> </li>
+            <li class="nav-item"><a class="nav-link" id="pills-minter-tab" data-toggle="pill" href="#pills-minter" role="tab" aria-controls="pills-minter" aria-selected="true">Mint</a></li>
+          </ul>
+        </div>
+      </header>
+
+      <div class="tab-content" id="pills-tabContent p-3">
+        <!-- Profile Tab -->
+        <div class="tab-pane show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"> 
+          <section>
+            <div class="row">
+              <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                <p class="info-text alert alert-primary">
+                  NETWORK: <span id="getChainName"></span>
+                </p>
+              </div>
+
+              <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                <p class="info-text alert alert-primary">
+                  ETH: <span id="getETHBal"></span>
+                </p>
+              </div>
+    
+              <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                <p class="info-text alert alert-primary">
+                  MATIC: <span id="getMATICBal"></span>
+                </p>
+              </div>
+            </div>
+          </section>
+    
+          <section>
+            <div class="row d-flex justify-content-center">
+              <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      Authentication
+                    </h4>
+                    
+                    <button
+                      class="btn btn-primary btn-lg btn-block mb-3"
+                      id="installMetamaskButton"
+                      disabled
+                    >
+                      Install Metamask
+                    </button>
+    
+                    <button
+                    class="btn btn-primary btn-lg btn-block mb-3"
+                    id="connectToEthereum"
+                    disabled
+                    >
+                      Connect to Ethereum
+                    </button>
+
+                    <button
+                    class="btn btn-primary btn-lg btn-block mb-3"
+                    id="connectToMumbai"
+                    disabled
+                    >
+                      Connect to Mumbai
+                    </button>
+    
+                    <button
+                    class="btn btn-primary btn-lg btn-block mb-3"
+                    id="connectToPolygon"
+                    disabled
+                    >
+                      Connect to Polygon
+                    </button>
+    
+                    <p class="info-text alert alert-secondary">
+                      wallet_address: <span id="getAccountsResult"></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    
+          <section>
+            <div class="row d-flex justify-content-center">
+              <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      Tokens Owned
+                    </h4>
+    
+                    <div class="erc20Tokens alert alert-success">
+                      <p class="info-text">
+                        Token Name: <span id="getERC20Name"></span>
+                      </p>
+                      <p class="info-text">
+                        Token Balance: <span id="getERC20Bal"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    
+          <section>
+            <div class="col-sm">
+              <div class="row" id="nfts-container"></div>
+            </div>
+    
+            <div class="modal" id="modal1">
+              <div class="modal-dialog">
+                <header class="modal-header">
+                  Sell NFT
+                  
+                  <button class="close-modal" aria-label="close modal" data-close>
+                    ✕  
+                  </button>
+                </header>
+                <div class="modal-content"></div>
+              </div>
+            </div>
+          </section>
+        </div> 
+        
+        <!-- Explore Tab -->
+        <div class="tab-pane" id="pills-explore" role="tabpanel" aria-labelledby="pills-explore-tab">
+          <section>
+            <div class="col-sm">
+              <div class="row" id="explore-nfts"></div>
+            </div>
+
+            <div class="modal" id="modal2">
+              <div class="modal2-dialog">
+                <header class="modal-header">
+                  Buy NFT
+                  
+                  <button class="close-modal" aria-label="close modal" data-close>
+                    ✕  
+                  </button>
+                </header>
+                <div class="explore-content"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Minter Tab -->
+
+        <div class="tab-pane" id="pills-minter" role="tabpanel" aria-labelledby="pills-minter-tab">
+          <section>
+            <div class="row d-flex justify-content-center" id="mintForm">
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      Create New NFTs
+                    </h5>
+                    <div class="form-group">
+                      <label class="main-label">Image, Video, Audio, or 3D Model</label>
+                      <label class="small-label">File types supported: [JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB]</label>
+                      <div class="upload-container"></div>
+                    </div>
+                    <div class="form-group">
+                      <label class="main-label">Blockchain:</label>
+                      <div class="chain-options"></div>
+                    </div>
+                    <div class="form-group">
+                      <label class="main-label">Name:</label>
+                      <div class="name-input">
+                        <input type="text" id="nft-name" class="input-text form-control my-2" placeholder="Name of your NFT" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="main-label">Description:</label>
+                      <div class="desc-input">
+                        <textarea class="form-control my-2" id="nft-desc" placeholder="Provide a detailed explanation of your item" rows="10" defaultValue=""></textarea>
+                      </div>
+                    </div>
+                    <!-- <div class="form-group">
+                      <label class="main-label">Creator Earnings:</label>
+                      <div class="royalty-input">
+                        <input type="number" class="input-text form-control my-2" placeholder='e.g. 1, 3, 5, 10...'/>
+                      </div>
+                    </div> -->
+                    <div class="mint">
+                      <div class="mint-container">
+                        <button class="btn mint-button btn-lg btn-block mb-3" disabled>
+                          Mint
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="status"></div>
+                <br/>
+                <div class="hash"></div>
+                <!-- <div class="hash-container"></div> -->
+                <br/>
+              </div>
+            </div>
+
+          </section>
+        </div>
+
+
+      </div>
+    </main>
+
+    <script src="bundle.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
