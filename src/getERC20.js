@@ -28,7 +28,7 @@ export async function DisplayERC20()
     const currentChain = EvmChain.create(chain)
 
     const balances = await Moralis.EvmApi.balance.getNativeBalance({
-      address: accounts[0].toString(), // charles's wallet : 0x4d26b10A97F13Bd970Fd3EC78a54Bc8533cAB970
+      address: accounts[0].toString(),
       chain: chainId
     });
     // console.log(balances.result.balance.ether)
@@ -115,19 +115,3 @@ export async function DisplayERC20()
 }
 
 window.addEventListener('load', DisplayERC20);
-
-// let myHeaders = new Headers();
-// myHeaders.append("X-API-Key", "nezp9hUq4udVQbnQHEokxz411Zx5xdlT5DK4DnBbWBXYQgKSCKhm0G4HBK0OODxF");
-
-// let raw = "";
-
-// let requestOptions = {
-//   method: 'GET',
-//   headers: myHeaders,
-//   redirect: 'follow'
-// };
-
-// fetch("https://deep-index.moralis.io/api/v2/" + String(accounts) + "/erc20?chain=" + String(chainId), requestOptions)
-//   .then(response => response.json())
-//   .then(result => console.log(result))
-//   .catch(error => console.log('error', error));
